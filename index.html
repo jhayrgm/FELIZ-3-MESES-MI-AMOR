@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi amor 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #2b0033, #000);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* corazones fondo */
+.heart-bg span{
+  position:absolute;
+  animation: float 10s linear infinite;
+  color:#ff4d88;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+/* header */
+header{
+  text-align:center;
+  padding:100px 20px;
+}
+
+header h1{
+  color:#ff66cc;
+  font-size:3em;
+}
+
+/* cards */
+.card{
+  max-width:900px;
+  margin:20px auto;
+  padding:25px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(10px);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 25px #ff4d88;
+}
+
+/* galeria */
+.gallery{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+}
+
+.gallery img{
+  height:220px;
+  border-radius:15px;
+  transition:0.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.1);
+}
+
+/* mini imágenes */
+.mini-img{
+  width:120px;
+  margin:10px;
+  border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts" class="heart-bg"></div>
+
+<header>
+  <h1>💜 Feliz 3 Meses 💜</h1>
+  <p>Para ti, mi amor ❤️</p>
+</header>
+
+<div class="card">
+  <h2>💖 Nuestra historia</h2>
+  <p>
+    Amor… estos meses contigo han sido algo que no puedo explicar.  
+    Me haces sentir tranquilo, feliz y acompañado.  
+    Gracias por cada momento, cada risa y cada recuerdo que estamos creando juntos. 💜
+  </p>
+</div>
+
+<div class="card">
+  <h2>📸 Nuestros momentos</h2>
+  <div class="gallery">
+    <img src="foto1.jpg.png">
+    <img src="foto2.jpg.png">
+    <img src="foto3.jpg.png">
+    <img src="foto4.jpg.png">
+    <img src="foto5.jpg.png">
+  </div>
+</div>
+
+<div class="card">
+  <h2>💫 Nosotros</h2>
+
+  <p>❤️ Pucca & Garu</p>
+  <img class="mini-img" src="pucca.png.png">
+
+  <p>🐉 Chimuelo</p>
+  <img class="mini-img" src="chimuelo.png.png">
+
+  <p>✨ Furia luminosa</p>
+  <img class="mini-img" src="furia.png.png">
+
+  <p>🎧 Mac Miller</p>
+  <img class="mini-img" src="mac.jpg.png">
+</div>
+
+<div class="card">
+  <h2>💘 Razones por las que me haces feliz</h2>
+  <ul>
+    <li>Tu sonrisa ilumina todo</li>
+    <li>Tu forma de ser tan única</li>
+    <li>La tranquilidad que siento contigo</li>
+    <li>Eres mi lugar favorito</li>
+    <li>Me haces sentir especial</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>💌 Para ti</h2>
+  <p>
+    Te quiero mucho, amor ❤️  
+    Gracias por todo lo que eres y por todo lo que me haces sentir.  
+    Quiero seguir viviendo muchos más momentos contigo. 💜
+  </p>
+</div>
+
+<script>
+const container = document.getElementById("hearts");
+
+setInterval(()=>{
+  let heart = document.createElement("span");
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  container.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),10000);
+},300);
+</script>
+
+</body>
+</html>
