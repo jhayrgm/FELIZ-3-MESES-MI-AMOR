@@ -46,8 +46,15 @@ header h1{
   border-radius:15px;
   background:rgba(255,255,255,0.06);
   backdrop-filter:blur(10px);
+  transition:0.3s;
 }
 
+.card:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 25px #ff4d88;
+}
+
+/* galeria */
 .gallery{
   display:flex;
   gap:15px;
@@ -57,8 +64,14 @@ header h1{
 .gallery img{
   height:220px;
   border-radius:15px;
+  transition:0.3s;
 }
 
+.gallery img:hover{
+  transform:scale(1.1);
+}
+
+/* mini imágenes */
 .mini-img{
   width:120px;
   margin:10px;
@@ -88,11 +101,11 @@ header h1{
 <div class="card">
   <h2>📸 Nuestros momentos</h2>
   <div class="gallery">
-    <img src="images/foto1.jpg">
-    <img src="images/foto2.jpg">
-    <img src="images/foto3.jpg">
-    <img src="images/foto4.jpg">
-    <img src="images/foto5.jpg">
+    <img src="foto1.jpg.png">
+    <img src="foto2.jpg.png">
+    <img src="foto3.jpg.png">
+    <img src="foto4.jpg.png">
+    <img src="foto5.jpg.png">
   </div>
 </div>
 
@@ -100,24 +113,24 @@ header h1{
   <h2>💫 Nosotros</h2>
 
   <p>❤️ Pucca & Garu</p>
-  <img class="mini-img" src="images/pucca.png">
+  <img class="mini-img" src="pucca.png.png">
 
   <p>🐉 Chimuelo</p>
-  <img class="mini-img" src="images/chimuelo.png">
+  <img class="mini-img" src="chimuelo.png.png">
 
   <p>✨ Furia luminosa</p>
-  <img class="mini-img" src="images/furia.png">
+  <img class="mini-img" src="furia.png.png">
 
   <p>🎧 Mac Miller</p>
-  <img class="mini-img" src="images/mac.jpg">
+  <img class="mini-img" src="mac.jpg.png">
 </div>
 
 <div class="card">
   <h2>💘 Razones por las que me haces feliz</h2>
   <ul>
-    <li>Tu sonrisa</li>
-    <li>Tu forma de ser</li>
-    <li>La paz que siento contigo</li>
+    <li>Tu sonrisa ilumina todo</li>
+    <li>Tu forma de ser tan única</li>
+    <li>La tranquilidad que siento contigo</li>
     <li>Eres mi lugar favorito</li>
     <li>Me haces sentir especial</li>
   </ul>
