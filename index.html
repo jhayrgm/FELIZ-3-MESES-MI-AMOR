@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Para mi amor 💜</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
@@ -28,12 +27,6 @@ body{
   z-index:999;
 }
 
-#intro h1{
-  color:#ff66cc;
-  margin-bottom:20px;
-  font-size:2em;
-}
-
 #startBtn{
   padding:15px 30px;
   background:#ff4d88;
@@ -44,19 +37,22 @@ body{
   cursor:pointer;
 }
 
-/* CORAZONES FONDO */
-.heart-bg span{
-  position:absolute;
-  animation: float 10s linear infinite;
-  color:#ff4d88;
+/* BOTÓN PLAY (backup) */
+#playBtn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#ff4d88;
+  border:none;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  font-size:20px;
+  color:white;
+  cursor:pointer;
 }
 
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
-}
-
-/* LLUVIA */
+/* CORAZONES */
 .heart-rain{
   position:fixed;
   top:-10px;
@@ -67,50 +63,9 @@ body{
   to{ transform:translateY(110vh); }
 }
 
-/* HEADER */
 header{
   text-align:center;
   padding:100px 20px;
-}
-
-header h1{
-  color:#ff66cc;
-  font-size:3em;
-}
-
-/* CARDS */
-.card{
-  max-width:900px;
-  margin:20px auto;
-  padding:25px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(10px);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 25px #ff4d88;
-}
-
-/* GALERIA */
-.gallery{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-}
-
-.gallery img{
-  height:220px;
-  border-radius:15px;
-}
-
-/* MINI IMGS */
-.mini-img{
-  width:120px;
-  margin:10px;
-  border-radius:12px;
 }
 </style>
 </head>
@@ -125,95 +80,32 @@ header h1{
 
 <!-- AUDIO -->
 <audio id="music" preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="./music.mp3" type="audio/mpeg">
 </audio>
 
-<div id="hearts" class="heart-bg"></div>
+<!-- BOTÓN PLAY MANUAL -->
+<button id="playBtn">🎵</button>
 
 <header>
   <h1>💜 Feliz 3 Meses 💜</h1>
-  <p>Para ti, mi amor ❤️</p>
 </header>
-
-<div class="card">
-  <h2>💖 Nuestra historia</h2>
-  <p>
-    Amor… estos meses contigo han sido algo que no puedo explicar.  
-    Me haces sentir tranquilo, feliz y acompañado.  
-    Cada momento contigo se siente especial, como si todo tuviera más sentido.  
-    Gracias por cada risa, cada abrazo y cada recuerdo que estamos creando juntos. 💜  
-  </p>
-</div>
-
-<div class="card">
-  <h2>📸 Nuestros momentos</h2>
-  <div class="gallery">
-    <img src="foto1.jpg">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
-    <img src="foto4.jpg">
-    <img src="foto5.jpg">
-  </div>
-</div>
-
-<div class="card">
-  <h2>💫 Nosotros</h2>
-
-  <p>❤️ Pucca & Garu</p>
-  <img class="mini-img" src="pucca.png">
-
-  <p>🐉 Chimuelo</p>
-  <img class="mini-img" src="chimuelo.png">
-
-  <p>✨ Furia luminosa</p>
-  <img class="mini-img" src="furia.png">
-
-  <p>🎧 Mac Miller</p>
-  <img class="mini-img" src="mac.jpg">
-</div>
-
-<div class="card">
-  <h2>💘 Razones por las que me haces feliz</h2>
-  <ul>
-    <li>Tu sonrisa ilumina mis días</li>
-    <li>Tu forma de ser tan única</li>
-    <li>La tranquilidad que siento contigo</li>
-    <li>Todo lo que vivimos juntos</li>
-    <li>Eres mi lugar favorito</li>
-  </ul>
-</div>
-
-<div class="card">
-  <h2>💌 Para ti</h2>
-  <p>
-    Te quiero mucho, amor ❤️  
-    Gracias por estos meses tan lindos.  
-    Me haces muy feliz… y quiero seguir viviendo mucho más contigo. 💜  
-  </p>
-</div>
 
 <script>
 const btn = document.getElementById("startBtn");
 const intro = document.getElementById("intro");
 const music = document.getElementById("music");
+const playBtn = document.getElementById("playBtn");
 
-// CLICK
-btn.addEventListener("click", () => {
+// CLICK ENTRAR
+btn.onclick = async ()=>{
   intro.style.display = "none";
 
-  // reproducir audio con fade
-  music.volume = 0;
-  music.play();
-
-  let vol = 0;
-  let fade = setInterval(()=>{
-    if(vol < 1){
-      vol += 0.05;
-      music.volume = vol;
-    } else {
-      clearInterval(fade);
-    }
-  },200);
+  try {
+    await music.play();
+    console.log("Audio OK");
+  } catch(e){
+    console.log("Bloqueado:", e);
+  }
 
   // lluvia corazones
   setInterval(()=>{
@@ -226,23 +118,14 @@ btn.addEventListener("click", () => {
     heart.style.animationDuration = (Math.random()*3+2)+"s";
 
     document.body.appendChild(heart);
-
     setTimeout(()=>heart.remove(),5000);
   },120);
-});
+};
 
-// corazones fondo
-const container = document.getElementById("hearts");
-
-setInterval(()=>{
-  let heart = document.createElement("span");
-  heart.innerHTML="💜";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(Math.random()*20+10)+"px";
-  container.appendChild(heart);
-
-  setTimeout(()=>heart.remove(),10000);
-},300);
+// BOTÓN MANUAL (SI FALLA AUTOPLAY)
+playBtn.onclick = ()=>{
+  music.play();
+};
 </script>
 
 </body>
