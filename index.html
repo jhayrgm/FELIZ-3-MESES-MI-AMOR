@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi amor 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #2b0033, #000);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* INTRO */
+#intro{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background: radial-gradient(circle, #1a001f, #000);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#intro h1{
+  color:#ff66cc;
+  margin-bottom:20px;
+}
+
+#startBtn{
+  padding:15px 30px;
+  background:#ff4d88;
+  border:none;
+  border-radius:30px;
+  color:white;
+  font-size:1.2em;
+  cursor:pointer;
+}
+
+/* CORAZONES FONDO */
+.heart-bg span{
+  position:absolute;
+  animation: float 10s linear infinite;
+  color:#ff4d88;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+/* LLUVIA */
+.heart-rain{
+  position:fixed;
+  top:-10px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+  }
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:100px 20px;
+}
+
+header h1{
+  color:#ff66cc;
+  font-size:3em;
+}
+
+/* CARDS */
+.card{
+  max-width:900px;
+  margin:20px auto;
+  padding:25px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(10px);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 25px #ff4d88;
+}
+
+/* GALERIA */
+.gallery{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+}
+
+.gallery img{
+  height:220px;
+  border-radius:15px;
+}
+
+/* MINI IMGS */
+.mini-img{
+  width:120px;
+  margin:10px;
+  border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>💜 Para ti, mi amor 💜</h1>
+  <button id="startBtn">Entrar 💖</button>
+</div>
+
+<!-- MUSICA -->
+<audio id="music">
+  <source src="music.mp3">
+</audio>
+
+<div id="hearts" class="heart-bg"></div>
+
+<header>
+  <h1>💜 Feliz 3 Meses 💜</h1>
+  <p>Para ti, mi amor ❤️</p>
+</header>
+
+<div class="card">
+  <h2>💖 Nuestra historia</h2>
+  <p>
+    Amor… estos meses contigo han sido algo que no puedo explicar.  
+    Me haces sentir tranquilo, feliz y acompañado.  
+    Cada momento contigo se siente especial, como si todo tuviera más sentido.  
+    Gracias por cada risa, cada abrazo y cada recuerdo que estamos creando juntos. 💜  
+  </p>
+</div>
+
+<div class="card">
+  <h2>📸 Nuestros momentos</h2>
+  <div class="gallery">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+    <img src="foto4.jpg">
+    <img src="foto5.jpg">
+  </div>
+</div>
+
+<div class="card">
+  <h2>💫 Nosotros</h2>
+
+  <p>❤️ Pucca & Garu</p>
+  <img class="mini-img" src="pucca.png">
+
+  <p>🐉 Chimuelo</p>
+  <img class="mini-img" src="chimuelo.png">
+
+  <p>✨ Furia luminosa</p>
+  <img class="mini-img" src="furia.png">
+
+  <p>🎧 Mac Miller</p>
+  <img class="mini-img" src="mac.jpg">
+</div>
+
+<div class="card">
+  <h2>💘 Razones por las que me haces feliz</h2>
+  <ul>
+    <li>Tu sonrisa ilumina mis días</li>
+    <li>Tu forma de ser tan única</li>
+    <li>La tranquilidad que siento contigo</li>
+    <li>Todo lo que vivimos juntos</li>
+    <li>Eres mi lugar favorito</li>
+    <li>Me haces querer ser mejor</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>💌 Para ti</h2>
+  <p>
+    Te quiero mucho, amor ❤️  
+    Gracias por estos meses tan lindos.  
+    Me haces feliz de una forma que no sabía que necesitaba.  
+    Y quiero seguir viviendo muchos más momentos contigo. 💜  
+  </p>
+</div>
+
+<script>
+// intro + lluvia + musica
+const intro = document.getElementById("intro");
+const btn = document.getElementById("startBtn");
+const music = document.getElementById("music");
+
+btn.onclick = ()=>{
+  intro.style.display="none";
+  music.play();
+
+  // lluvia corazones
+  setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.className = "heart-rain";
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20+15)+"px";
+    heart.style.animationDuration = (Math.random()*3+2)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),5000);
+  },120);
+};
+
+// corazones fondo suaves
+const container = document.getElementById("hearts");
+
+setInterval(()=>{
+  let heart = document.createElement("span");
+  heart.innerHTML="💜";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  container.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),10000);
+},300);
+</script>
+
+</body>
+</html>
